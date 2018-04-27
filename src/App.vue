@@ -23,6 +23,9 @@
     </transition>
     <main>
       <focus></focus>
+      <titl>
+        <span>TING</span>
+      </titl>
     </main>
     <footer>Footer</footer>
   </div>
@@ -30,7 +33,7 @@
 
 <script>
 import focus from "./components/home/focus";
-
+import titl from "./components/home/title"
 export default {
   name: "App",
   data() {
@@ -38,7 +41,7 @@ export default {
       headShow: true
     };
   },
-  components: { focus },
+  components: { focus,titl},
   methods: {
     menu() {
       scroll = document.documentElement.scrollTop || document.body.scrollTop;
@@ -79,9 +82,10 @@ header {
   box-shadow: 0 1px 4px 0 #ececec;
 }
 .head {
-  margin: 0 73px;
+  margin: 0 auto;
   height: 100%;
   display: flex;
+  width: 1200px;
 }
 .head-logo {
   background-image: url(./assets/head-logo.png);
@@ -94,8 +98,9 @@ header {
 }
 main {
   color: #333;
-  padding-top: 90px;
-  margin: 20px 73px 0;
+  /* padding-top: 90px; */
+  margin: 126px auto;
+  width: 960px
 }
 
 nav {
@@ -110,10 +115,10 @@ nav {
   display: flex;
 }
 
-ul {
+nav>ul {
   display: flex;
 }
-li {
+nav>ul>li {
   padding: 26px;
 }
 </style>
