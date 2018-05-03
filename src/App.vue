@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="ap">
     <transition name="fade">
       <header v-show="headShow">
           <div class="head">
@@ -7,10 +7,10 @@
             <nav>
             <ul>
               <li><a href="">首页</a></li>
-              <li><a href="">阅读</a></li>
-              <li><a href="">电台</a></li>
-              <li><a href="">碎片</a></li>
-              <li><a href="">客户端</a></li>
+              <li><router-link to="/read">阅读</router-link></li>
+              <li><router-link to="/radio">电台</router-link></li>
+              <li><router-link to="/fragment">碎片</router-link></li>
+              <li><router-link to="/client">客户端</router-link></li>
             </ul>
               <div class="nav-icon">
                 <div class="write">书写</div>
@@ -21,19 +21,14 @@
           </div>
       </header>
     </transition>
-    <main>
-      <focus></focus>
-      <titl>
-        <span>TING</span>
-      </titl>
-    </main>
+
+    <router-view></router-view>
+
     <footer>Footer</footer>
   </div>
 </template>
 
 <script>
-import focus from "./components/home/focus";
-import titl from "./components/home/title"
 export default {
   name: "App",
   data() {
@@ -41,11 +36,11 @@ export default {
       headShow: true
     };
   },
-  components: { focus,titl},
+  components: {},
   methods: {
     menu() {
       scroll = document.documentElement.scrollTop || document.body.scrollTop;
-      scroll > 7 ? this.headShow = false : this.headShow = true
+      scroll > 7 ? (this.headShow = false) : (this.headShow = true);
     }
   },
   mounted() {
@@ -100,7 +95,7 @@ main {
   color: #333;
   /* padding-top: 90px; */
   margin: 126px auto;
-  width: 960px
+  width: 960px;
 }
 
 nav {
@@ -115,10 +110,10 @@ nav {
   display: flex;
 }
 
-nav>ul {
+nav > ul {
   display: flex;
 }
-nav>ul>li {
+nav > ul > li {
   padding: 26px;
 }
 </style>
