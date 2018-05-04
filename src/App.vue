@@ -6,11 +6,7 @@
             <div class="head-logo"></div>
             <nav>
             <ul>
-              <li><a href="">首页</a></li>
-              <li><router-link to="/read">阅读</router-link></li>
-              <li><router-link to="/radio">电台</router-link></li>
-              <li><router-link to="/fragment">碎片</router-link></li>
-              <li><router-link to="/client">客户端</router-link></li>
+              <li :class="changeClass" v-for="(value, key) in links" :key="key.id"><router-link :to=key>{{value}}</router-link></li>              
             </ul>
               <div class="nav-icon">
                 <div class="write">书写</div>
@@ -24,7 +20,9 @@
 
     <router-view></router-view>
 
-    <footer>Footer</footer>
+    <footer>
+      <div class="foot"></div>
+    </footer>
   </div>
 </template>
 
@@ -33,7 +31,14 @@ export default {
   name: "App",
   data() {
     return {
-      headShow: true
+      headShow: true,
+      links:{
+        "/":"首页",
+        "read":"阅读",
+        "radio":"电台",
+        "fragment":"碎片",
+        "client":"客户端"
+      }
     };
   },
   components: {},
@@ -112,8 +117,19 @@ nav {
 
 nav > ul {
   display: flex;
+  height: 100%;
 }
 nav > ul > li {
   padding: 26px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+nav > ul > li:hover {
+  background: #fbfbfb;
+}
+footer {
+  height: 118px;
+  background: #1a1818;
 }
 </style>
