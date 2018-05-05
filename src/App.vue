@@ -6,12 +6,16 @@
             <div class="head-logo"></div>
             <nav>
             <ul>
-              <li :class="changeClass" v-for="(value, key) in links" :key="key.id"><router-link :to=key>{{value}}</router-link></li>              
+              <li :class="{active:link.isactive}" v-for=" (link,index) in links" :key="link.link" @click="changeClass(index)" >
+                <router-link :to=link.link>{{link.name}}</router-link>
+                </li>              
             </ul>
               <div class="nav-icon">
-                <div class="write">书写</div>
-                <div class="notice">通知</div>
-                <div class="user-logo">用户</div>
+                <div class="write">
+                  <img src="" alt="">
+                </div>
+                <div class="notice"></div>
+                <div class="user-logo"></div>
               </div>
             </nav>
           </div>
@@ -32,13 +36,13 @@ export default {
   data() {
     return {
       headShow: true,
-      links:{
-        "/":"首页",
-        "read":"阅读",
-        "radio":"电台",
-        "fragment":"碎片",
-        "client":"客户端"
-      }
+      links: [
+        { link: "/", name: "首页", isactive: true },
+        { link: "read", name: "阅读", isactive: false },
+        { link: "radio", name: "电台", isactive: false },
+        { link: "fragment", name: "碎片", isactive: false },
+        { link: "client", name: "客户端", isactive: false }
+      ]
     };
   },
   components: {},
@@ -46,8 +50,14 @@ export default {
     menu() {
       scroll = document.documentElement.scrollTop || document.body.scrollTop;
       scroll > 7 ? (this.headShow = false) : (this.headShow = true);
+    },
+    changeClass(index) {
+      this.links.map(function(item) {
+        item.isactive = false;
+      });
+      this.links[index].isactive = true;
     }
-  },
+},
   mounted() {
     window.addEventListener("scroll", this.menu);
   },
@@ -120,13 +130,51 @@ nav > ul {
   height: 100%;
 }
 nav > ul > li {
-  padding: 26px;
   height: 100%;
   display: flex;
   align-items: center;
+  box-sizing: border-box
+}
+nav>ul>li>a{
+  padding: 26px;
+  
+}
+nav > ul > li.active {
+  border-bottom: 3px solid #333333;
+  font-weight: bolder;
+  background: #fbfbfb;  
 }
 nav > ul > li:hover {
   background: #fbfbfb;
+}
+
+.write{
+  width: 42px;
+  height: 42px;
+  border: 1px solid #5FB870;
+  position: relative;
+  border-radius: 50%;
+  
+}
+.write::after{
+  content: '';
+  display: block;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #5FB870;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -18px;
+  margin-left: -18px;
+}
+.notice,.user-logo{
+  width: 42px;
+  height: 42px;
+  border: 1px solid #CACACA;
+  border-radius: 50%;
+  margin-left: 25px
 }
 footer {
   height: 118px;
