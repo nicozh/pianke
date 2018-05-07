@@ -12,9 +12,11 @@
             </ul>
               <div class="nav-icon">
                 <div class="write">
-                  <img src="" alt="">
+                  <img src="./assets/edit-icon.png" alt="edit">
                 </div>
-                <div class="notice"></div>
+                <div class="notice">
+                  <img src="./assets/msg.png" alt="msg">
+                </div>
                 <div class="user-logo"></div>
               </div>
             </nav>
@@ -49,7 +51,7 @@ export default {
   methods: {
     menu() {
       scroll = document.documentElement.scrollTop || document.body.scrollTop;
-      scroll > 7 ? (this.headShow = false) : (this.headShow = true);
+      scroll > 100 ? (this.headShow = false) : (this.headShow = true);
     },
     changeClass(index) {
       this.links.map(function(item) {
@@ -57,7 +59,7 @@ export default {
       });
       this.links[index].isactive = true;
     }
-},
+  },
   mounted() {
     window.addEventListener("scroll", this.menu);
   },
@@ -108,7 +110,6 @@ header {
 }
 main {
   color: #333;
-  /* padding-top: 90px; */
   margin: 126px auto;
   width: 960px;
 }
@@ -118,7 +119,7 @@ nav {
   justify-content: space-between;
   height: 100%;
   align-items: center;
-  margin-left: 172px;
+  margin-left: 92px;
   flex: 1;
 }
 .nav-icon {
@@ -133,48 +134,66 @@ nav > ul > li {
   height: 100%;
   display: flex;
   align-items: center;
-  box-sizing: border-box
+  box-sizing: border-box;
 }
-nav>ul>li>a{
+nav > ul > li > a {
   padding: 26px;
-  
 }
 nav > ul > li.active {
   border-bottom: 3px solid #333333;
   font-weight: bolder;
-  background: #fbfbfb;  
+  background: #fbfbfb;
 }
 nav > ul > li:hover {
   background: #fbfbfb;
 }
 
-.write{
-  width: 42px;
-  height: 42px;
-  border: 1px solid #5FB870;
+.write {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #5fb870;
   position: relative;
   border-radius: 50%;
-  
 }
-.write::after{
-  content: '';
-  display: block;
-  width: 36px;
-  height: 36px;
+.write > img {
+  width: 19px;
+  height: 20px;
   border-radius: 50%;
-  background: #5FB870;
+  position: absolute;
+  z-index: 1;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.write::after {
+  content: "";
+  display: block;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #5fb870;
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -18px;
-  margin-left: -18px;
+  transform: translate(-50%,-50%);
+  z-index: -1;
 }
-.notice,.user-logo{
+.notice,
+.user-logo {
   width: 42px;
   height: 42px;
-  border: 1px solid #CACACA;
+  border: 1px solid #cacaca;
   border-radius: 50%;
-  margin-left: 25px
+  margin-left: 28px;
+  position: relative;
+}
+.notice>img{
+  width: 44px;
+  height: 44px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%)
 }
 footer {
   height: 118px;
