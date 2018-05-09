@@ -67,7 +67,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 @import url(./reset.css);
 
 .fade-enter-active,
@@ -92,6 +92,7 @@ header {
   left: 0;
   right: 0;
   box-shadow: 0 1px 4px 0 #ececec;
+  z-index: 2;
 }
 .head {
   margin: 0 auto;
@@ -121,80 +122,81 @@ nav {
   align-items: center;
   margin-left: 92px;
   flex: 1;
+  ul {
+    display: flex;
+    height: 100%;
+    li {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      &.active {
+        border-bottom: 3px solid #333333;
+        font-weight: bolder;
+        background: #fbfbfb;
+      }
+      &.hover {
+        background: #fbfbfb;
+      }
+      a {
+        padding: 26px;
+      }
+    }
+  }
 }
+
+@mixin icon-position {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .nav-icon {
   display: flex;
+  &:hover {
+    cursor: pointer;
+  }
+  .write {
+    width: 44px;
+    height: 44px;
+    border: 1px solid #5fb870;
+    position: relative;
+    border-radius: 50%;
+    img {
+      width: 19px;
+      height: 20px;
+      border-radius: 50%;
+      z-index: 1;
+      @include icon-position();
+    }
+    &::after {
+      content: "";
+      display: block;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #5fb870;
+      @include icon-position();
+      z-index: -1;
+    }
+  }
+  .notice,
+  .user-logo {
+    width: 42px;
+    height: 42px;
+    border: 1px solid #cacaca;
+    border-radius: 50%;
+    margin-left: 28px;
+    position: relative;
+  }
+  .notice > img {
+    width: 44px;
+    height: 44px;
+    @include icon-position();
+  }
 }
 
-nav > ul {
-  display: flex;
-  height: 100%;
-}
-nav > ul > li {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
-}
-nav > ul > li > a {
-  padding: 26px;
-}
-nav > ul > li.active {
-  border-bottom: 3px solid #333333;
-  font-weight: bolder;
-  background: #fbfbfb;
-}
-nav > ul > li:hover {
-  background: #fbfbfb;
-}
-
-.write {
-  width: 44px;
-  height: 44px;
-  border: 1px solid #5fb870;
-  position: relative;
-  border-radius: 50%;
-}
-.write > img {
-  width: 19px;
-  height: 20px;
-  border-radius: 50%;
-  position: absolute;
-  z-index: 1;
-  top:50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-}
-.write::after {
-  content: "";
-  display: block;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: #5fb870;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  z-index: -1;
-}
-.notice,
-.user-logo {
-  width: 42px;
-  height: 42px;
-  border: 1px solid #cacaca;
-  border-radius: 50%;
-  margin-left: 28px;
-  position: relative;
-}
-.notice>img{
-  width: 44px;
-  height: 44px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%)
-}
 footer {
   height: 118px;
   background: #1a1818;

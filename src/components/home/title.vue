@@ -15,14 +15,13 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .s-title {
   padding: 70px 0 40px 28px;
 }
 .title-text {
   position: relative;
-}
-.title-text::before {
+  &::before {
   content: "";
   display: block;
   width: 18px;
@@ -31,5 +30,6 @@ export default {
   position: absolute;
   top: 2px;
   left: -28px;
+}
 }
 </style>

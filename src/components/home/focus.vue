@@ -19,32 +19,31 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .focus {
   margin: 0 auto;
-}
+  ul > li {
+    width: 240px;
+    height: 240px;
+    float: left;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
 
-ul > li:first-child {
-  width: 480px;
-  height: 480px;
-}
-ul > li {
-  width: 240px;
-  height: 240px;
-  float: left;
-  /* border: 1px solid red; */
-  overflow: hidden;
-}
-ul>li:hover img{
-  transform: scale(1.1);
-  transition: 1s;
+    &:hover img {
+      transform: scale(1.1);
+      transition: 1s;
+    }
+    &:first-child {
+      width: 480px;
+      height: 480px;
+    }
+  }
 }
 .clearfix::after {
   content: "";
   display: block;
   clear: both;
-}
-img {
-  width: 100%;
 }
 </style>
