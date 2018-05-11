@@ -78,12 +78,12 @@
       window.addEventListener("scroll", this.menu);
     },
     computed: {},
-    beforeMount() {
+    created() {
       let path = this.$route.path;
       this.links.map(function (item) {
-        if (item.link === path) {
+        item.isactive = false;
+        if ('/' + item.link === path||item.link===path) {  //主页的path为 "/"
           item.isactive = true;
-          console.log(path)
         }
       });
     },
