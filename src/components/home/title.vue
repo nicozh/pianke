@@ -8,11 +8,11 @@
 
 <script>
 export default {
-  name: "titl",
-  data() {
-    return {};
+  name: 'titl',
+  data () {
+    return {}
   }
-};
+}
 </script>
 
 <style lang="scss">
@@ -22,14 +22,14 @@ export default {
 .title-text {
   position: relative;
   &::before {
-  content: "";
-  display: block;
-  width: 18px;
-  height: 18px;
-  background: #333333;
-  position: absolute;
-  top: 2px;
-  left: -28px;
-}
+    content: "";
+    display: block;
+    width: 18px;
+    height: 18px;
+    background: #333333;
+    position: absolute;
+    top: 2px;
+    left: -28px;
+  }
 }
 </style>

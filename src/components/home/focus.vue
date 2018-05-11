@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: "focus",
+  name: 'focus',
   data() {
     return {};
   }
